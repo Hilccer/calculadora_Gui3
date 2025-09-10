@@ -9,10 +9,10 @@ public class Main {
     public static void main(String[] args) {
 
         //try (var conn = ConnectionFactory.getConnection()) {
-        //    System.out.println("Conexão bem sucedida!");
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
+         //   System.out.println("Conexão bem sucedida!");
+         //} catch (Exception e) {
+          //   e.printStackTrace();
+         //}
 
         JFrame frame = new JFrame("Calculadora"); // Cria a janela principal com título "Calculadora"
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao fechar a janela
@@ -48,6 +48,10 @@ public class Main {
                         String expressao = textField.getText(); // Pega o que foi digitado
                         double resultado = calcular(expressao); // Chama função de cálculo
                         textField.setText(String.valueOf(resultado)); // Mostra resultado
+
+                        CalculadoraDAO sqlinsert = new CalculadoraDAO();
+                        sqlinsert.salvarOperacao(expressao, resultado);
+
                     } catch (Exception ex) {
                         textField.setText("Erro"); // Mostra erro se não conseguir calcular
                     }
